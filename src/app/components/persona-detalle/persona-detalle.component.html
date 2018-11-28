@@ -1,0 +1,43 @@
+<h2>{{titulo}}</h2>
+<p> Componente para aprender a usar una CLASE o POJO <b>model/videojuego.ts</b> </p>
+<p> Vamos a guardar todas las clases en la carpeta <b>MODEL</b> </p>
+
+
+
+<div class="row">
+  <div class="col">
+    <h3>Detalle del Objeto</h3>
+    <p>Usamos el <b>pipe json</b> para mostrar el objeto, siempre para depurar</p>
+    {{Personas | json}}
+    <p>Sin usar el <b>pipe json</b> para mostrar el objeto, siempre para depurar</p>
+    {{Personas}}
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+      <h4>Listado Personas</h4>
+      <ol>
+        <li *ngFor="let p of personas">{{p.nombre}} - {{p.Sexo}}</li>
+      </ol>
+  </div>
+  <div class="col">
+      <h4>Listado masculino</h4>
+      <ol>
+          <li *ngFor="let p of personas|sexo: 0 ">{{p.nombre}} - {{p.Sexo}}</li>
+      </ol>
+  </div>
+  <div class="col">
+      <h4>Listado femenino</h4>
+      <ol>
+          <li *ngFor="let p of personas|sexo: 1 ">{{p.nombre}} - {{p.Sexo}}</li>
+      </ol>
+  </div>
+  <div class="col">
+      <h4>Listado indefenido</h4>
+      <ol>
+          <li *ngFor="let p of personas|sexo: 2 ">{{p.nombre}} - {{p.Sexo}}</li>
+      </ol>
+  </div>
+</div>
+
+

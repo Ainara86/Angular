@@ -1,0 +1,55 @@
+<h1>Pipes</h1>
+<hr>
+<p><a href="https://angular.io/guide/pipes" target="_blank">Documentación de <b>Pipes</b></a></p>
+
+  <p><a href="https://angular.io/api?type=pipe" target="_blank">API para <b>Pipes</b></a></p>
+
+<p>
+  Los pipes en Angular 2 son lo mismo que los filtros en AngularJS, es decir, nos permiten alterar la 
+  forma en la que se van a visualizar los datos. Podemos usar los definidos por Angular o crear los 
+  nuestros propios.
+</p>
+<hr>
+    <h2>Pipes de Angular</h2>
+    <p><b>uppercase:</b> {{"TodoEnMayusculas"| uppercase}}</p>
+    <p><b>lowercase:</b> {{"TodoEnMayusculas"| lowercase}}</p>
+    <p><b>Fecha sin pipe:</b> {{fecha }}</p>
+    <p><b>Fecha con pipe:</b> {{fecha | date }}</p>
+    <p><b>Fecha con pipe formateada</b> <i>(dd-MM-yyyy)</i>: {{fecha | date:"dd-MM-yyyy" }}</p>
+    <p><b>Número sin pipe:</b> {{numero}}</p>
+    <p><b>Número con pipe:</b> {{numero |number:'1.4-4' }}
+      <span class="text-danger">*No tenemos locale para castellano, mirar consola el error.</span></p>
+<hr>
+    <h2>Pipes de Propios</h2>
+    <p>Para más información puedes ver el siguiente video:</p>
+    <iframe width="360" height="215" src="https://www.youtube.com/embed/bDcD0Cqx6io" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="row">
+      <div class="col">
+        <h4>Datos con pipe JSON</h4>
+        <p>{{videojuegos | json}}</p>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col">
+          <h4>Listado Videojuegos</h4>
+          <ol>
+            <li *ngFor="let v of videojuegos">{{v.titulo}} - {{v.alquilado}}</li>
+          </ol>
+      </div>
+      <div class="col">
+          <h4>Listado Alquilados</h4>
+          <ol>
+              <li *ngFor="let v of videojuegos|alquilado:true">{{v.titulo}} - {{v.alquilado}}</li>
+          </ol>
+      </div>
+      <div class="col">
+          <h4>Listado Disponibles</h4>
+          <ol>
+              <li *ngFor="let v of videojuegos|alquilado:false">{{v.titulo}} - {{v.alquilado}}</li>
+          </ol>
+      </div>
+    </div>
+    
+    
+
