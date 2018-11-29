@@ -7,8 +7,9 @@ export class Fruta {
     private _calorias: number;
     private _colores: string[];
     private _oferta: boolean;
-    private _foto: string;
     private _descuento: number;
+    private _foto: string;
+    
     
     
    
@@ -18,8 +19,9 @@ export class Fruta {
         this.calorias=0;
         this.colores=[''];
         this.oferta=false;
-        this.foto='https://www.google.es/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwi5386ts_neAhWxxIUKHbh1B0YQjRx6BAgBEAU&url=http%3A%2F%2Fisanidad.com%2F84459%2Finvestigacion-determina-que-el-consumo-de-frutas-y-verduras-podria-reducir-el-riesgo-de-epoc%2F&psig=AOvVaw1qx8IC9dU4dEEuUJUuLHNY&ust=1543573989611683';
         this.descuento=0;
+        this.foto='https://www.google.es/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwi5386ts_neAhWxxIUKHbh1B0YQjRx6BAgBEAU&url=http%3A%2F%2Fisanidad.com%2F84459%2Finvestigacion-determina-que-el-consumo-de-frutas-y-verduras-podria-reducir-el-riesgo-de-epoc%2F&psig=AOvVaw1qx8IC9dU4dEEuUJUuLHNY&ust=1543573989611683';
+        
     }
 
     public get nombre(): string {

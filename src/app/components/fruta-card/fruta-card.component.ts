@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Fruta } from 'src/app/model/fruta';
 
 @Component({
@@ -8,27 +8,45 @@ import { Fruta } from 'src/app/model/fruta';
 })
 export class FrutaCardComponent implements OnInit {
 
-  fruta: Fruta;
+   _fruta: Fruta;
+
+  @Input('_fruta') set fruta(value: Fruta) {
+    if (value) {
+      this._fruta = value;
+    } else {
+      console.debug('fruta undefined => new Fruta()');
+      this._fruta = new Fruta();
+    }
+  }
+
+  get fruta(): Fruta {
+    return this._fruta;
+  }
+
   constructor() {
     console.trace('FrutaCardComponent constructor');
-    this.fruta=new Fruta();
+    /*
+    this.fruta = new Fruta();
     this.fruta.nombre = 'Malacaton';
     this.fruta.calorias = 17.4;
     this.fruta.precio = 3.45;
-    this.fruta.colores = ['Amarillo', 'Naranja','Verde'];
     this.fruta.oferta = true;
-    this.fruta.descuento=10;
-    this.fruta.foto='https://www.frutadelasarga.com/server/Portal_0008706/img/products/melocoton-de-cieza_1677407.jpg';
+    this.fruta.descuento = 10;
+    this.fruta.imagen = 'https://pbs.twimg.com/profile_images/486884835571408897/iZnw1lBq_400x400.png';
+    */
 
-   }
+  }
 
   ngOnInit() {
     console.trace('FrutaCardComponent ngOnInit');
   }
 
-  comprar(){
+  comprar() {
     console.trace('FrutaCardComponent comprar');
-    alert(`Lo sentimos pero de momento esta opcion esta desabilitada ## ${this.fruta.nombre} ##`);
+    alert(`Lo sentimos pero de momento detemos esta opcion deshabilitada ## ${this.fruta.nombre} ## `);
+    // TODO hacerlo con A
+    // event.preventDefault();
   }
+
 
 }
