@@ -13,6 +13,8 @@ import { PersonaDetalleComponent } from './components/persona-detalle/persona-de
 import { PipeComponent } from './components/pipe/pipe.component';
 import { VideojuegoPipe } from './pipes/videojuego.pipe';
 import { SexoPipe } from './pipes/sexo.pipe';
+import { FrutaDetalleComponent } from './components/fruta-detalle/fruta-detalle.component';
+import { FrutaCardComponent } from './components/fruta-card/fruta-card.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { SexoPipe } from './pipes/sexo.pipe';
     PersonaDetalleComponent,
     PipeComponent,
     VideojuegoPipe,
-    SexoPipe
+    SexoPipe,
+    FrutaDetalleComponent,
+    FrutaCardComponent
   ],
   imports: [
     BrowserModule,
