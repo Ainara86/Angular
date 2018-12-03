@@ -1,0 +1,22 @@
+{
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" },
+    "tareas":[
+        { "id":1, "titulo":"cambiar README", "terminado": false },
+        { "id":2, "titulo":"Tarea terminada", "terminado": true },
+        { "id":3, "titulo":"Ver formularios Reactivos", "terminado": false }
+
+    ],
+    "frutas":[
+      { "nombre":"Pera", "precio":3,"calorias":150,"oferta":true,"descuento":10,"foto":"http://www.cajanature.com/405-large_default/pera-ecologica-.jpg","cantidad":0 },
+      { "nombre":"Platano", "precio":4.50,"calorias":170,"oferta":false,"descuento":0,"foto":"http://padeladdict.com/wp-content/uploads/2012/12/platano2.jpg","cantidad":0 },
+      { "nombre":"Fresa", "precio":6,"calorias":190,"oferta":true,"descuento":20,"foto":"http://libbys.es/wordpress/wp-content/uploads/2018/05/fresas.jpg","cantidad":0 },
+      { "nombre":"Kiwi", "precio":2.50,"calorias":100,"oferta":false,"descuento":0,"foto":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Kiwi_%28Actinidia_chinensis%29_2_Luc_Viatour.jpg/220px-Kiwi_%28Actinidia_chinensis%29_2_Luc_Viatour.jpg","cantidad":0 }
+
+  ]
+  }

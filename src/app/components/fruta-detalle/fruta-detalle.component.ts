@@ -31,6 +31,7 @@ export class FrutaDetalleComponent implements OnInit {
 
   ngOnInit() {
     console.trace('ngOnInit EjercicioFrutasComponent');
+    
   }
 
   loadArrayFrutas(): void {

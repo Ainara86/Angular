@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 // Componentes
 import { AppRoutingModule } from './app-routing.module';
@@ -12,14 +13,17 @@ import { Page404Component } from './components/page404/page404.component';
 import { VideojuegoDetalleComponent } from './components/videojuego-detalle/videojuego-detalle.component';
 import { PipeComponent } from './components/pipe/pipe.component';
 import { FrutaDetalleComponent } from './components/fruta-detalle/fruta-detalle.component';
-
+import { TareaComponent } from './components/tarea/tarea.component';
 // Pipes
 import { VideojuegoPipe } from './pipes/videojuego.pipe';
 import { FrutaCardComponent } from './components/fruta-card/fruta-card.component';
 import { ComparadorComponent } from './components/comparador/comparador.component';
 
-// Providers o servicios
 
+// Providers o servicios
+import { FrutaService } from './providers/fruta.service';
+import { TareaService } from './providers/tarea.service';
+import { HttpClient } from 'selenium-webdriver/http';
 
 @NgModule({
   declarations: [
@@ -33,14 +37,19 @@ import { ComparadorComponent } from './components/comparador/comparador.componen
     VideojuegoPipe,
     FrutaDetalleComponent,
     FrutaCardComponent,
-    ComparadorComponent
+    ComparadorComponent,
+    TareaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule //Servicio REST
   ],
-  providers: [],
+  providers: [
+    FrutaService,
+    TareaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
