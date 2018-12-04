@@ -11,10 +11,12 @@ import { PipeComponent } from './components/pipe/pipe.component';
 import { FrutaDetalleComponent } from './components/fruta-detalle/fruta-detalle.component';
 import { ComparadorComponent } from './components/comparador/comparador.component';
 import { TareaComponent } from './components/tarea/tarea.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'fruta', component: FrutaComponent},
+    { path: 'formulario', component: FormularioComponent},
     { path: 'pipe', component: PipeComponent},
     { path: 'arrays', component: FrutaDetalleComponent},
     { path: 'comparador', component: ComparadorComponent},

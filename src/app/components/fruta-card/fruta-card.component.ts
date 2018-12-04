@@ -41,6 +41,7 @@ export class FrutaCardComponent implements OnInit {
 
   ngOnInit() {
     console.trace('FrutaCardComponent ngOnInit');
+    
   }
 
   comprar() {

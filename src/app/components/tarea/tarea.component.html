@@ -1,7 +1,26 @@
 <p>
-  Ejemplo de crear un Provider o Service  para realizar las operaciones <b>CRUD</b> contra un servicio <b>REST</b>
+  Ejemplo de crear un Provider o Service para realizar las operaciones <b>CRUD</b> contra un servicio <b>REST</b>
 </p>
 {{tareas|json}}
+<hr>
+<div class="form-group form-check">
+  <div class="row">
+    <div class="col">
+      <input type="text" [(ngModel)]="nueva" class="form-check-input" id="exampleCheck1">
+    </div>
+    <div class="col">
+      <button (click)="nuevaTarea()" type="submit" class="btn btn-primary">Crear</button>
+    </div>
+  </div>
+
+
+</div>
+<input (change)="filtrar()" type="checkbox">{{textoFiltro}}
 <ul class="list-group">
-    <li class="list-group-item list-group-item-{{(tarea.terminado)?'danger':'success'}}" *ngFor="let tarea of tareas">{{tarea.id}}--{{tarea.titulo}}</li>
+  <li class="list-group-item" *ngFor="let tarea of tareas | completas : todas">
+    <input type="checkbox" checked="{{(tarea.terminado)?'checked':''}}" (change)="terminar(tarea)">
+    <span *ngIf="!tarea.terminado"> &nbsp;{{tarea.id}}--{{tarea.titulo}}</span>
+    <span *ngIf="tarea.terminado"><del>&nbsp;{{tarea.id}}--{{tarea.titulo}}</del></span>
+    <span class="fas fa-trash-alt float-right" (click)="eliminar(tarea.id)"></span>
+  </li>
 </ul>

@@ -1,0 +1,71 @@
+<h1>Formularios reactivos</h1>
+<a href="https://angular.io/guide/reactive-forms" target="_blank">Documentación oficial</a>
+
+
+<h6>Frutas</h6>
+<div class="row">
+  <div class="col"><button class="btn btn-primary" (click)="cargarFormulario()">Cargar formulario</button></div>
+</div>
+<div class="row">
+  <div class="col">
+    <p>Valores: {{formulario.status}}</p>
+  </div>
+  <div class="col">
+    <p>Estado</p>
+  </div>
+</div>
+
+<form [formGroup]="formulario" novalidate (ngSubmit)="sumitar()">
+  <div class="form-group ">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" formControlName="nombre">
+    <small *ngIf="formulario.controls.nombre.invalid && formulario.controls.nombre.touched" class="form-text text-danger">Errores
+      de validación.</small>
+    <small *ngIf="formulario.controls.nombre.valid" class="form-text text-success">Todo bien.</small>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="precio">Precio</label>
+      <input type="text" class="form-control" formControlName="precio">
+      <small *ngIf="formulario.controls.precio.invalid && formulario.controls.precio.touched" class="form-text text-danger">Errores
+        de validación.</small>
+      <small *ngIf="formulario.controls.precio.valid" class="form-text text-success">Todo bien.</small>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="oferta">Oferta</label>
+        <input type="checkbox" checked="{{(formulario.controls.oferta.value)?'true':'false'}}" class="form-control" formControlName="oferta">
+      </div>
+    <div class="form-group col-md-5">
+        <label for="descuento">Descuento</label>
+        
+        <input type="{{(formulario.controls.oferta.value)?'text':'hidden'}}" class="form-control" formControlName="descuento">
+        <small *ngIf="formulario.controls.descuento.invalid" class="form-text text-danger">Errores de validación.</small>
+        <small *ngIf="formulario.controls.descuento.valid" class="form-text text-success">Todo bien.</small>
+    </div>
+  </div>
+
+  <!--<div class="form-group">
+    <label for="inputAddress2">Colores</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>-->
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="calorias">Calorias</label>
+      <input type="text" class="form-control" formControlName="calorias">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="foto">Foto</label>
+      <input type="text" class="form-control" formControlName="foto">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary col-md-12" value="crear" [disabled]="formulario.status==='INVALID'">Crear</button>
+</form>
+
+<div>
+  <ul class="list-group">
+    <li *ngFor="let f of frutas" class="list-group-item">{{f.nombre}}
+      <span class="fas fa-trash-alt float-right" (click)="eliminar(f.id)"></span>
+    </li>
+  </ul>
+</div>

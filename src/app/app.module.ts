@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 // Componentes
@@ -18,12 +18,14 @@ import { TareaComponent } from './components/tarea/tarea.component';
 import { VideojuegoPipe } from './pipes/videojuego.pipe';
 import { FrutaCardComponent } from './components/fruta-card/fruta-card.component';
 import { ComparadorComponent } from './components/comparador/comparador.component';
-
+import { TareasPipe } from './pipes/tareas.pipe';
 
 // Providers o servicios
 import { FrutaService } from './providers/fruta.service';
 import { TareaService } from './providers/tarea.service';
 import { HttpClient } from 'selenium-webdriver/http';
+import { FormularioComponent } from './components/formulario/formulario.component';
+
 
 @NgModule({
   declarations: [
@@ -38,12 +40,15 @@ import { HttpClient } from 'selenium-webdriver/http';
     FrutaDetalleComponent,
     FrutaCardComponent,
     ComparadorComponent,
-    TareaComponent
+    TareaComponent,
+    TareasPipe,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule, //banana in a box [(ngModule)]
+    ReactiveFormsModule, //Formularios reactivos. Mas complejos
     HttpClientModule //Servicio REST
   ],
   providers: [

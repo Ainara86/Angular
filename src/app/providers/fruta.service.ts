@@ -8,23 +8,49 @@ import { Observable } from 'rxjs';
 })
 export class FrutaService {
 
-  frutas: Fruta[];
+  //frutas: Fruta[];
   endpoint: string ='http://localhost:3000/frutas';
 
   constructor(public http: HttpClient) { 
     console.log('FrutaService constructor');
-    this.frutas = [];
+   // this.frutas = [];
   }
 
   getAll():  Observable<any> {
-    this.frutas = [];
+    //this.frutas = [];
     //this.loadFrutas();
     return this.http.get(this.endpoint);
   }
 
+  add(fruta: Fruta): Observable<any> {
+    let body = {
+
+      "nombre": fruta.nombre,
+      "precio": fruta.precio,
+      "calorias": fruta.calorias,
+      "oferta": fruta.oferta,
+      "descuento": fruta.descuento,
+      "foto": fruta.foto,
+      "cantidad": fruta.cantidad
+
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(this.endpoint, body, httpOptions);
+  }
+
+  delete(id: number): Observable<any> {
+    let uri = this.endpoint + "/" + id;
+    console.debug(`TareaService delete ${uri}`);
+    return this.http.delete(uri);
+  }
+
 
   /* TODO cambiar por llamada a Servicio Rest */
- /* private loadFrutas() {
+ /*private loadFrutas() {
     console.trace('ComparadorComponent loadFrutas');
     let f: Fruta;
 
