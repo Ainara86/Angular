@@ -25,6 +25,8 @@ import { FrutaService } from './providers/fruta.service';
 import { TareaService } from './providers/tarea.service';
 import { HttpClient } from 'selenium-webdriver/http';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { AlertasComponent } from './components/alertas/alertas.component';
+import { ListadoComponent } from './components/listado/listado.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { FormularioComponent } from './components/formulario/formulario.componen
     ComparadorComponent,
     TareaComponent,
     TareasPipe,
-    FormularioComponent
+    FormularioComponent,
+    AlertasComponent,
+    ListadoComponent
   ],
   imports: [
     BrowserModule,

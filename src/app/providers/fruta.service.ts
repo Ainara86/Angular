@@ -22,6 +22,11 @@ export class FrutaService {
     return this.http.get(this.endpoint);
   }
 
+  getByID(id: number): Observable<any>{
+    let uri = this.endpoint + "/" + id;
+    return this.http.get(uri);
+  }
+
   add(fruta: Fruta): Observable<any> {
     let body = {
 
@@ -31,7 +36,10 @@ export class FrutaService {
       "oferta": fruta.oferta,
       "descuento": fruta.descuento,
       "foto": fruta.foto,
-      "cantidad": fruta.cantidad
+      "cantidad": fruta.cantidad,
+      "colores":{
+        "nombre": fruta.colores
+      }
 
     }
     const httpOptions = {
@@ -48,47 +56,28 @@ export class FrutaService {
     return this.http.delete(uri);
   }
 
-
-  /* TODO cambiar por llamada a Servicio Rest */
- /*private loadFrutas() {
-    console.trace('ComparadorComponent loadFrutas');
-    let f: Fruta;
-
-    f = new Fruta();
-    f.nombre = 'Banana';
-    f.precio = 3.15;
-    f.calorias = 500;
-    f.colores = ['Amarillo', 'Negro'];
-    f.oferta = true;
-    f.foto = 'http://padeladdict.com/wp-content/uploads/2012/12/platano2.jpg';
-    this.frutas.push(f);
-
-    f = new Fruta();
-    f.nombre = 'Pera';
-    f.precio = 2;
-    f.calorias = 350;
-    f.colores = ['Amarillo', 'Verde'];
-    f.foto = 'http://www.cajanature.com/405-large_default/pera-ecologica-.jpg';
-    this.frutas.push(f);
-
-    f = new Fruta();
-    f.nombre = 'Kiwi';
-    f.precio = 2.34;
-    f.calorias = 720;
-    f.colores = ['Amarillo', 'Verde'];
-    f.foto = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Kiwi_%28Actinidia_chinensis%29_2_Luc_Viatour.jpg/220px-Kiwi_%28Actinidia_chinensis%29_2_Luc_Viatour.jpg';
-    this.frutas.push(f);
-
-    f = new Fruta();
-    f.nombre = 'Fresa';
-    f.precio = 0.75;
-    f.calorias = 100;
-    f.colores = ['Rosa', 'Rojo', 'Verde'];
-    f.oferta = true;
-    f.foto = 'http://libbys.es/wordpress/wp-content/uploads/2018/05/fresas.jpg';
-    this.frutas.push(f);
-
-  }*/
-
-
+  update(fruta:Fruta): Observable<any>{
+    let uri = this.endpoint + "/" + fruta.id;
+    console.debug(`TareaService marcarTerminado ${uri}`);
+    let body = {
+        "nombre": fruta.nombre,
+         "precio": fruta.precio,
+         "calorias": fruta.calorias,
+         "oferta": fruta.oferta,
+         "descuento": fruta.descuento,
+         "foto": fruta.foto,
+         "cantidad": fruta.cantidad,
+         "colores": [
+             {
+                 "nombre": fruta.colores
+             }
+         ]
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.put(uri, body, httpOptions);
+  }
 }

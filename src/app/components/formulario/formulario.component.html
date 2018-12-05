@@ -4,18 +4,21 @@
 
 <h6>Frutas</h6>
 <div class="row">
-  <div class="col"><button class="btn btn-primary" (click)="cargarFormulario()">Cargar formulario</button></div>
-</div>
-<div class="row">
   <div class="col">
-    <p>Valores: {{formulario.status}}</p>
+    <p>Valores: {{formulario.value|json}}</p>
   </div>
   <div class="col">
-    <p>Estado</p>
+    <p>Estado: {{formulario.status|json}}</p>
   </div>
 </div>
-
 <form [formGroup]="formulario" novalidate (ngSubmit)="sumitar()">
+    <div class="form-group " [hidden]="true">
+        <label for="id">ID</label>
+        <input type="text" class="form-control" formControlName="id">
+        <small *ngIf="formulario.controls.id.invalid && formulario.controls.nombre.touched" class="form-text text-danger">Errores
+          de validación.</small>
+        <small *ngIf="formulario.controls.id.valid" class="form-text text-success">Todo bien.</small>
+      </div>
   <div class="form-group ">
     <label for="nombre">Nombre</label>
     <input type="text" class="form-control" formControlName="nombre">
@@ -33,39 +36,48 @@
     </div>
     <div class="form-group col-md-2">
         <label for="oferta">Oferta</label>
-        <input type="checkbox" checked="{{(formulario.controls.oferta.value)?'true':'false'}}" class="form-control" formControlName="oferta">
+        <input type="checkbox" class="form-control" formControlName="oferta">
       </div>
-    <div class="form-group col-md-5">
+    <div class="form-group col-md-5" [hidden]="!formulario.controls.oferta.value">
         <label for="descuento">Descuento</label>
-        
-        <input type="{{(formulario.controls.oferta.value)?'text':'hidden'}}" class="form-control" formControlName="descuento">
-        <small *ngIf="formulario.controls.descuento.invalid" class="form-text text-danger">Errores de validación.</small>
+        <input type="number" class="form-control" formControlName="descuento" min="5" max="90" >
+        <small *ngIf="formulario.controls.descuento.invalid" class="form-text text-danger">min: 5% max:90%</small>
         <small *ngIf="formulario.controls.descuento.valid" class="form-text text-success">Todo bien.</small>
     </div>
   </div>
 
-  <!--<div class="form-group">
-    <label for="inputAddress2">Colores</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>-->
+  <div class="form-group">
+    <label for="colores">Colores:</label>
+    
+    <div formArrayName="colores">
+        <a (click)="nuevoColor()" class="btn btn-outline-primary"><i class="fas fa-plus"></i></a>
+        <div *ngFor="let color of formulario.get('colores').controls; let i = index;">
+          <div [formGroupName]="i">
+            <input formControlName="color"> <button (click)="eliminarColor(i)"><i class="fas fa-trash-alt"></i></button>
+            <small *ngIf="formulario.get('colores').controls[i].invalid" class="form-text text-danger">min: 2 max:20</small>
+            <small *ngIf="formulario.get('colores').controls[i].valid"  class="form-text text-success">Todo bien</small>
+          </div>
+        </div>
+    </div>
+  </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col">
       <label for="calorias">Calorias</label>
       <input type="text" class="form-control" formControlName="calorias">
     </div>
-    <div class="form-group col-md-6">
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
       <label for="foto">Foto</label>
-      <input type="text" class="form-control" formControlName="foto">
+      <input type="text" class="form-control" formControlName="foto" placeholder="Foto con extension .png .jpg o .jpeg">
+      <small *ngIf="formulario.controls.foto.invalid" class="form-text text-danger">Formato inadecuado.</small>
+      <small *ngIf="formulario.controls.foto.valid" class="form-text text-success">Todo bien.</small>
+      <img src="{{formulario.controls.foto.value}}" alt="imagen fruta" class="foto">
     </div>
   </div>
 
   <button type="submit" class="btn btn-primary col-md-12" value="crear" [disabled]="formulario.status==='INVALID'">Crear</button>
+  <button (click)="modificar(formulario.value)" class="btn btn-primary col-md-12" value="modificar">Modificar</button>
 </form>
 
-<div>
-  <ul class="list-group">
-    <li *ngFor="let f of frutas" class="list-group-item">{{f.nombre}}
-      <span class="fas fa-trash-alt float-right" (click)="eliminar(f.id)"></span>
-    </li>
-  </ul>
-</div>
+

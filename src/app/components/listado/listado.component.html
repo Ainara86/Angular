@@ -1,0 +1,7 @@
+<div>
+  <ul class="list-group">
+    <li *ngFor="let f of frutas" class="list-group-item"><a [routerLink]="['../detalle', f.id]">{{f.nombre}}</a>
+      <span class="fas fa-trash-alt float-right" (click)="eliminar(f.id)"></span>
+    </li>
+  </ul>
+</div>

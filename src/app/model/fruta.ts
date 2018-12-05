@@ -2,6 +2,8 @@ import { defineInjector } from '@angular/core';
 import { RadioControlRegistry } from '@angular/forms/src/directives/radio_control_value_accessor';
 
 export class Fruta {
+    private _id: number;
+    
     private _nombre: string;
     private _precio: number;
     private _calorias: number;
@@ -15,6 +17,7 @@ export class Fruta {
     
    
     constructor(){
+        this.id=-1;
         this.nombre='';
         this.precio=0;
         this.calorias=0;
@@ -23,6 +26,13 @@ export class Fruta {
         this.descuento=0;
         this.foto='https://www.google.es/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwi5386ts_neAhWxxIUKHbh1B0YQjRx6BAgBEAU&url=http%3A%2F%2Fisanidad.com%2F84459%2Finvestigacion-determina-que-el-consumo-de-frutas-y-verduras-podria-reducir-el-riesgo-de-epoc%2F&psig=AOvVaw1qx8IC9dU4dEEuUJUuLHNY&ust=1543573989611683';
         this.cantidad=0;
+    }
+
+    public get id(): number {
+        return this._id;
+    }
+    public set id(value: number) {
+        this._id = value;
     }
 
     public get nombre(): string {
