@@ -13,6 +13,9 @@ import { ComparadorComponent } from './components/comparador/comparador.componen
 import { TareaComponent } from './components/tarea/tarea.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { ListadoComponent } from './components/listado/listado.component';
+import { BackofficeComponent } from './components/backoffice/backoffice.component';
+import { BackofficeGuard } from './guards/backoffice.guard';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -23,6 +26,8 @@ const routes: Routes = [
     { path: 'pipe', component: PipeComponent},
     { path: 'arrays', component: FrutaDetalleComponent},
     { path: 'comparador', component: ComparadorComponent},
+    { path: 'login', component: LoginComponent},
+    { path: 'privado', component: BackofficeComponent, canActivate:[BackofficeGuard]},
     { path: 'videojuego-detalle', component: VideojuegoDetalleComponent },
     { path: 'flujo', component: FlujoInformacionComponent},
     { path: 'tareas', component: TareaComponent},

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { HttpClient } from 'selenium-webdriver/http';
 
 // Componentes
 import { AppRoutingModule } from './app-routing.module';
@@ -11,23 +12,31 @@ import { FlujoInformacionComponent } from './components/flujo-informacion/flujo-
 import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page404/page404.component';
 import { VideojuegoDetalleComponent } from './components/videojuego-detalle/videojuego-detalle.component';
-import { PipeComponent } from './components/pipe/pipe.component';
-import { FrutaDetalleComponent } from './components/fruta-detalle/fruta-detalle.component';
-import { TareaComponent } from './components/tarea/tarea.component';
-// Pipes
-import { VideojuegoPipe } from './pipes/videojuego.pipe';
 import { FrutaCardComponent } from './components/fruta-card/fruta-card.component';
 import { ComparadorComponent } from './components/comparador/comparador.component';
+import { FrutaDetalleComponent } from './components/fruta-detalle/fruta-detalle.component';
+import { TareaComponent } from './components/tarea/tarea.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
+import { AlertasComponent } from './components/alertas/alertas.component';
+import { ListadoComponent } from './components/listado/listado.component';
+import { BackofficeComponent } from './components/backoffice/backoffice.component';
+import { LoginComponent } from './components/login/login.component';
+
+// Pipes
+import { VideojuegoPipe } from './pipes/videojuego.pipe';
+
 import { TareasPipe } from './pipes/tareas.pipe';
+import { PipeComponent } from './components/pipe/pipe.component';
 
 // Providers o servicios
 import { FrutaService } from './providers/fruta.service';
 import { TareaService } from './providers/tarea.service';
-import { HttpClient } from 'selenium-webdriver/http';
-import { FormularioComponent } from './components/formulario/formulario.component';
-import { AlertasComponent } from './components/alertas/alertas.component';
-import { ListadoComponent } from './components/listado/listado.component';
+import { LoginService } from './providers/login.service';
 
+
+
+//guards
+import { BackofficeGuard } from './guards/backoffice.guard';
 
 @NgModule({
   declarations: [
@@ -46,7 +55,9 @@ import { ListadoComponent } from './components/listado/listado.component';
     TareasPipe,
     FormularioComponent,
     AlertasComponent,
-    ListadoComponent
+    ListadoComponent,
+    BackofficeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +68,9 @@ import { ListadoComponent } from './components/listado/listado.component';
   ],
   providers: [
     FrutaService,
-    TareaService
+    TareaService,
+    LoginService,
+    BackofficeGuard
   ],
   bootstrap: [AppComponent]
 })
